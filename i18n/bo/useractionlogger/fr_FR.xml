@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.projectcare.bo.useractionlogger" lcid="fr_FR">
+  <key id="delete-media">delete.media {documentlabel} {lang}</key>
+  <key id="log-delete-media">log delete media</key>
+  <key id="move-media">move.media {destinationlabel} {lang} {documentlabel}</key>
+  <key id="log-move-media">log move media</key>
+  <key id="delete-report">delete.report {documentlabel}</key>
+  <key id="log-delete-report">log delete report</key>
+  <key id="delete-folder">delete.folder {documentlabel}</key>
+  <key id="log-delete-folder">log delete folder</key>
+  <key id="savepermissions-rootfolder">savepermissions.rootfolder {documentlabel}</key>
+  <key id="log-savepermissions-rootfolder">log savepermissions rootfolder</key>
+</i18n>

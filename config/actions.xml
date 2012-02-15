@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+	<action name="createFolder">
+		<parameter name="listWidget" />
+		<body><![CDATA[this.createDocumentEditor('modules_projectcare_folder', listWidget.getSelectedItems()[0].id);]]></body>
+	</action>
+	
+	<action name="downloadMedia">
+		<parameter name="listWidget"/>
+		<body><![CDATA[
+			var documentId   = listWidget.getSelectedItems()[0].mediaId;
+			var documentLang = this.getContextLang();
+			wToolkit.openlink('media', 'BoDisplay', {cmpref: documentId, lang: documentLang, forceDownload: true});
+		]]></body>
+	</action>
+	<action name="downloadMediaIsActive">
+		<parameter name="itemData"/>
+		<body><![CDATA[
+			return !(itemData.isRunningBool);
+		]]></body>
+	</action>
+</actions>

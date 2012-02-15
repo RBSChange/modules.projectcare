@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+	<binding fileName="modules/task/persistentdocument/import/task_binding.xml" />
+	<binding fileName="modules/notification/persistentdocument/import/notification_binding.xml" />
+	<binding fileName="modules/projectcare/persistentdocument/import/projectcare_binding.xml" />
+
+	<rootfolder module="projectcare">
+		<reportfolder byLabel="m.projectcare.bo.general.check-links-report-folder" codeReference="check-links" />
+	</rootfolder>
+
+	<systemfolder module="task" relatedmodule="projectcare">
+		<plannedtask label="Vérification des liens" bySystemtaskclassname="projectcare_CheckLinksTask" minute="-1" hour="-1" dayofmonth="-1" />
+	</systemfolder>
+	
+	<systemfolder module="notification" relatedmodule="projectcare">
+		<attribute name="body">
+			<![CDATA[Bonjour,<br /><br />Une vérification des liens du site vient de s'achever. Rendez-vous dans le module "Centre de qualité" pour consulter le rapport.]]>
+		</attribute>
+		<notification label="Vérification des liens" codename="modules_projectcare/checklinksdone"
+			availableparameters="{receiverFirstName},{receiverLastName},{receiverFullName},{receiverTitle},{receiverEmail}"
+			subject="Vérification des liens" header="" body-attr="" footer="" />
+	</systemfolder>
+</script>

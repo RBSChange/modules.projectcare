@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.projectcare.bo.general.column" lcid="fr_FR">
+	<key id="begin-date">date de début</key>
+	<key id="end-date">date de fin</key>
+	<key id="is-running">en cours</key>
+</i18n>

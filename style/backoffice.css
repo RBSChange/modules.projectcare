@@ -1,0 +1,6 @@
+treechildren::-moz-tree-image(modules_projectcare_report){
+	list-style-image: url(/changeicons/small/report.png);
+}
+treechildren::-moz-tree-image(modules_projectcare_reportfolder){
+	list-style-image: url(/changeicons/small/report-folder.png);
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.projectcare.document.report" lcid="fr_FR">
+	<include id="m.generic.document.document" />
+	<key id="document-name">rapport de vérification des liens</key>
+	<key id="csvfile">fichier CSV</key>
+	<key id="begindate">date de début</key>
+</i18n>

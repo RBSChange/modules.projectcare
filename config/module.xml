@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<module>
+		<enabled>true</enabled>
+		<visible>true</visible>
+		<category>admin</category>
+		<icon>projectcare</icon>
+	</module>
+	<project>
+		<!-- XHTMLFragment properties to exclude from link checks. -->
+		<xhtmlfragmentsExcludes>
+			<website_page>
+				<entry name="content">content</entry>
+			</website_page>
+			<website_pagereference>
+				<entry name="content">content</entry>
+			</website_pagereference>
+			<website_pagegroup>
+				<entry name="content">content</entry>
+			</website_pagegroup>
+			<website_pageversion>
+				<entry name="content">content</entry>
+			</website_pageversion>
+			<users_backenduser>
+				<entry name="dashboardcontent">dashboardcontent</entry>
+			</users_backenduser>
+		</xhtmlfragmentsExcludes>
+		<!-- Number of document in one chunk of link checks. -->
+		<entry name="checkLinksChunkSize">100</entry>
+		<!-- Number of days between two link checks. -->
+		<entry name="checkLinksFrequency">15</entry>
+	</project>
+</config>

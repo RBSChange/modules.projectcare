@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+  <binding fileName="modules/useractionlogger/persistentdocument/import/useractionlogger_binding.xml"/>
+  <actiondef modulename="projectcare" actionname="delete.media" label="m.projectcare.bo.useractionlogger.delete-media"/>
+  <actiondef modulename="projectcare" actionname="move.media" label="m.projectcare.bo.useractionlogger.move-media"/>
+  <actiondef modulename="projectcare" actionname="delete.report" label="m.projectcare.bo.useractionlogger.delete-report"/>
+  <actiondef modulename="projectcare" actionname="delete.folder" label="m.projectcare.bo.useractionlogger.delete-folder"/>
+  <actiondef modulename="projectcare" actionname="savepermissions.rootfolder" label="m.projectcare.bo.useractionlogger.savepermissions-rootfolder"/>
+</script>
