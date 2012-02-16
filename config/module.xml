@@ -24,6 +24,12 @@
 			<mailbox_message>
 				<entry name="content">content</entry>
 			</mailbox_message>
+			<inquiry_message>
+				<entry name="contents">contents</entry>
+			</inquiry_message>
+			<form_response>
+				<entry name="contents">contents</entry>
+			</form_response>
 			<users_backenduser>
 				<entry name="dashboardcontent">dashboardcontent</entry>
 			</users_backenduser>

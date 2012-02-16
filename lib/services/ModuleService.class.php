@@ -152,7 +152,7 @@ class projectcare_ModuleService extends ModuleBaseService
 			if ($a->getAttribute('href') != '#' && f_util_StringUtils::beginsWith($a->getAttribute('href'), 'http'))
 			{
 				$httpClient = HTTPClientService::getInstance()->getNewHTTPClient();
-				$httpClient->setOption('CURLOPT_NOBODY', true);
+				$httpClient->setOption(CURLOPT_NOBODY, true);
 				$httpClient->setTimeOut(10);
 				$httpClient->get($a->getAttribute('href'));				
 				$returnCode = $httpClient->getHTTPReturnCode();
@@ -205,7 +205,6 @@ class projectcare_ModuleService extends ModuleBaseService
 						'targetId' => $documentId,
 						'url' => null
 					);
-					Framework::exception($e);
 				}
 			}
 			// Else return link.

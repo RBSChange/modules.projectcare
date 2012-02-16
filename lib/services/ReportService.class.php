@@ -58,7 +58,7 @@ class projectcare_ReportService extends f_persistentdocument_DocumentService
 	public function initializeCSVReport()
 	{
 		// Generate the media.
-		$fileName = 'report-' . date_Formatter::format(date_Calendar::getInstance(), 'Y-m-d-H-i') . '.csv';
+		$fileName = 'report_' . date_Formatter::format(date_Calendar::getInstance(), 'Y-m-d_H-i') . '.csv';
 		$file = media_FileService::getInstance()->getNewDocumentInstance();
 		$file->setLabel('CSV Report');
 		$file->setNewFileName($fileName);
