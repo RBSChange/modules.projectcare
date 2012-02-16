@@ -21,6 +21,9 @@
 			<website_pageversion>
 				<entry name="content">content</entry>
 			</website_pageversion>
+			<mailbox_message>
+				<entry name="content">content</entry>
+			</mailbox_message>
 			<users_backenduser>
 				<entry name="dashboardcontent">dashboardcontent</entry>
 			</users_backenduser>

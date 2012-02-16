@@ -58,10 +58,11 @@ class projectcare_ReportService extends f_persistentdocument_DocumentService
 	public function initializeCSVReport()
 	{
 		// Generate the media.
+		$fileName = 'report-' . date_Formatter::format(date_Calendar::getInstance(), 'Y-m-d-H-i') . '.csv';
 		$file = media_FileService::getInstance()->getNewDocumentInstance();
 		$file->setLabel('CSV Report');
-		$file->setNewFileName('report.csv');
-		$file->setFilename('report.csv');
+		$file->setNewFileName($fileName);
+		$file->setFilename($fileName);
 	
 		// Generate the report.
 		$parent = projectcare_ReportfolderService::getInstance()->createQuery()->findUnique();
@@ -125,6 +126,7 @@ class projectcare_ReportService extends f_persistentdocument_DocumentService
 			'httpStatus' => 'httpStatus',
 			'curlError' => 'curlError',
 			'containerId' => 'containerId',
+			'containerLabel' => 'containerLabel',
 			'containerModel' => 'containerModel',
 			'containerLang' => 'containerLang',
 			'linkType' => 'linkType',
