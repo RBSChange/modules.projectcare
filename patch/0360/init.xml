@@ -5,22 +5,14 @@
 	<binding fileName="modules/projectcare/persistentdocument/import/projectcare_binding.xml" />
 
 	<rootfolder module="projectcare">
-		<reportfolder label="m.projectcare.bo.general.check-links-report-folder" byCodeReference="check-links" />
 		<reportfolder label="m.projectcare.bo.general.check-document-in-blocks-report-folder" byCodeReference="check-document-in-blocks" />
 	</rootfolder>
 
 	<systemfolder module="task" relatedmodule="projectcare">
-		<plannedtask label="m.projectcare.bo.general.check-links-report-task" bySystemtaskclassname="projectcare_CheckLinksTask" minute="-1" hour="-1" dayofmonth="-1" />
 		<plannedtask label="m.projectcare.bo.general.check-document-in-blocks-report-task" bySystemtaskclassname="projectcare_CheckDocumentInBlockTask" minute="-1" hour="-1" dayofmonth="-1" />
 	</systemfolder>
 	
 	<systemfolder module="notification" relatedmodule="projectcare">
-		<attribute name="body">
-			<![CDATA[Bonjour,<br /><br />Une vérification des liens du site vient de s'achever. Rendez-vous dans le module "Centre de qualité" pour consulter le rapport.]]>
-		</attribute>
-		<notification label="Vérification des liens" codename="modules_projectcare/checklinksdone"
-			availableparameters="{receiverFirstName},{receiverLastName},{receiverFullName},{receiverTitle},{receiverEmail}"
-			subject="Vérification des liens" header="" body-attr="" footer="" />
 		<attribute name="body">
 			<![CDATA[Bonjour,<br /><br />Une vérification des documents dans les blocks des pages du site vient de s'achever. Rendez-vous dans le module "Centre de qualité" pour consulter le rapport.]]>
 		</attribute>

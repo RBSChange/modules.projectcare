@@ -4,5 +4,9 @@
 	<key id="system-folder-name">centre de qualité</key>
 	<key id="download-file">télécharger le fichier</key>
 	<key id="check-links-report-folder">vérification des liens</key>
+	<key id="check-links-report-task">vérification des liens</key>
 	<key id="check-links-report">rapport de vérification des liens</key>
+	<key id="check-document-in-blocks-report-folder">vérification des documents dans les blocks</key>
+	<key id="check-document-in-blocks-report-task">vérification des documents dans les blocks</key>
+	<key id="check-document-in-blocks-report">rapport de vérification des documents dans les blocks</key>
 </i18n>

@@ -34,9 +34,27 @@
 				<entry name="dashboardcontent">dashboardcontent</entry>
 			</users_backenduser>
 		</xhtmlfragmentsExcludes>
+		<urlProperties>
+			<website_pageexternal>
+				<entry name="url">url</entry>
+			</website_pageexternal>
+			<bookmarks_bookmark>
+				<entry name="url">url</entry>
+			</bookmarks_bookmark>
+		</urlProperties>
+		<bbCodeProperties>
+			
+		</bbCodeProperties>
+		
 		<!-- Number of document in one chunk of link checks. -->
 		<entry name="checkLinksChunkSize">100</entry>
 		<!-- Number of days between two link checks. -->
 		<entry name="checkLinksFrequency">15</entry>
+		
+		<!-- Number of document in one chunk of document in block checks. -->
+		<entry name="checkDocumentInBlockChunkSize">100</entry>
+		<!-- Number of days between two document in block checks. -->
+		<entry name="checkDocumentInBlockFrequency">15</entry>
 	</project>
+
 </config>

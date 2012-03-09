@@ -9,7 +9,7 @@ class projectcare_ReportService extends f_persistentdocument_DocumentService
 	 * @var projectcare_ReportService
 	 */
 	private static $instance;
-
+	
 	/**
 	 * @return projectcare_ReportService
 	 */
@@ -21,7 +21,7 @@ class projectcare_ReportService extends f_persistentdocument_DocumentService
 		}
 		return self::$instance;
 	}
-
+	
 	/**
 	 * @return projectcare_persistentdocument_report
 	 */
@@ -29,7 +29,7 @@ class projectcare_ReportService extends f_persistentdocument_DocumentService
 	{
 		return $this->getNewDocumentInstanceByModelName('modules_projectcare/report');
 	}
-
+	
 	/**
 	 * Create a query based on 'modules_projectcare/report' model.
 	 * Return document that are instance of modules_projectcare/report,
@@ -53,101 +53,6 @@ class projectcare_ReportService extends f_persistentdocument_DocumentService
 	}
 	
 	/**
-	 * @return projectcare_persistentdocument_report
-	 */
-	public function initializeCSVReport()
-	{
-		// Generate the media.
-		$fileName = 'report_' . date_Formatter::format(date_Calendar::getInstance(), 'Y-m-d_H-i') . '.csv';
-		$file = media_FileService::getInstance()->getNewDocumentInstance();
-		$file->setLabel('CSV Report');
-		$file->setNewFileName($fileName);
-		$file->setFilename($fileName);
-	
-		// Generate the report.
-		$parent = projectcare_ReportfolderService::getInstance()->createQuery()->findUnique();
-		$report = projectcare_ReportService::getInstance()->getNewDocumentInstance();
-		$report->setLabel('m.projectcare.bo.general.check-links-report');
-		$report->setCsvFile($file);
-		$report->save();
-		TreeService::getInstance()->newFirstChild($parent->getId(), $report->getId());
-	
-		// Initialize the CSV file.
-		$options = $this->getCSVExportOptions();
-		$options->outputHeaders = true;
-		$csvFragment = f_util_CSVUtils::export($this->getLinksFields(), array(), $options);
-		$path = $report->getFilePath();
-		f_util_FileUtils::mkdir(dirname($path));
-		f_util_FileUtils::write($path, $csvFragment, f_util_FileUtils::OVERRIDE);
-		
-		return $report;
-	}
-	
-	/**
-	 * @param projectcare_persistentdocument_report $report
-	 */
-	public function finalizeReport($report)
-	{
-		$report->setEndDate(date_Calendar::getInstance());
-		$report->save();
-		
-		// Send notification.
-		$ps = f_permission_PermissionService::getInstance();
-		$ns = notification_NotificationService::getInstance();
-		$rootId = ModuleService::getInstance()->getRootFolderId('projectcare');
-		$accessorIds = $ps->getAccessorIdsForRoleByDocumentId('modules_projectcare.Admin', $rootId);
-		foreach (users_UserService::getInstance()->convertToPublishedUserIds($accessorIds) as $userId)
-		{
-			$user = users_persistentdocument_user::getInstanceById($userId);
-			$notif = $ns->getConfiguredByCodeName('modules_projectcare/checklinksdone', null, $user->getLang());
-			if ($notif instanceof notification_persistentdocument_notification)
-			{
-				$user->getDocumentService()->sendNotificationToUserCallback($notif, $user);
-			}
-		}
-	}
-	
-	/**
-	 * @param projectcare_persistentdocument_report $report
-	 * @param array $links
-	 */
-	public function appendLinksToCsv($report, $links)
-	{
-		$csvFragment = f_util_CSVUtils::export($this->getLinksFields(), $links, $this->getCSVExportOptions());
-		$report->appendFragmentToCsv($csvFragment);
-	}
-	
-	/**
-	 * @return array<string => string>
-	 */
-	protected function getLinksFields()
-	{
-		return array(
-			'httpStatus' => 'httpStatus',
-			'curlError' => 'curlError',
-			'containerId' => 'containerId',
-			'containerLabel' => 'containerLabel',
-			'containerModel' => 'containerModel',
-			'containerLang' => 'containerLang',
-			'linkType' => 'linkType',
-			'propertyName' => 'propertyName',
-			'targetId' => 'targetId',
-			'url' => 'url'
-		);
-	}
-	
-	/**
-	 * @return array<string => string>
-	 */
-	protected function getCSVExportOptions()
-	{
-		$options = new f_util_CSVUtils_export_options();
-		$options->outputHeaders = false;
-		$options->separator = ';';
-		return $options;
-	}
-
-	/**
 	 * @param projectcare_persistentdocument_report $document
 	 * @param string $forModuleName
 	 * @param array $allowedSections
@@ -160,7 +65,8 @@ class projectcare_ReportService extends f_persistentdocument_DocumentService
 		$ls = LocaleService::getInstance();
 		$link = LinkHelper::getUIActionLink('media', 'BoDisplay')->setQueryParameter('cmpref', $document->getCsvFile()->getId());
 		$link->setQueryParameter('lang', $document->getLang())->setQueryParameter('forceDownload', 'true');
-		$resume['properties']['downloadCSV'] = array('href' => $link->getUrl(), 'label' => $ls->transBO('m.projectcare.bo.general.download-file', array('ucf')));
+		$resume['properties']['downloadCSV'] = array('href' => $link->getUrl(), 
+			'label' => $ls->transBO('m.projectcare.bo.general.download-file', array('ucf')));
 		$resume['properties']['beginDate'] = date_Formatter::toDefaultDatetimeBO($document->getUICreationdate());
 		if (!$document->isRunning())
 		{
@@ -174,7 +80,7 @@ class projectcare_ReportService extends f_persistentdocument_DocumentService
 		
 		return $resume;
 	}
-
+	
 	/**
 	 * @param projectcare_persistentdocument_report $document
 	 * @param string $moduleName
@@ -197,4 +103,5 @@ class projectcare_ReportService extends f_persistentdocument_DocumentService
 			$nodeAttributes['isRunning'] = $ls->transBO('m.uixul.bo.general.yes', array('ucf'));
 		}
 	}
+
 }

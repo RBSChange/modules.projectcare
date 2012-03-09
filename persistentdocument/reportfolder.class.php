@@ -8,8 +8,8 @@ class projectcare_persistentdocument_reportfolder extends projectcare_persistent
 	/**
 	 * @return string
 	 */
-	public function getLabel()
+	public function getTreeNodeLabel()
 	{
-		return LocaleService::getInstance()->transBO(parent::getLabel(), array('ucf'));
+		return LocaleService::getInstance()->transBO(parent::getTreeNodeLabel(), array('ucf'));
 	}
 }
