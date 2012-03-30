@@ -5,11 +5,4 @@
  */
 class projectcare_persistentdocument_reportfolder extends projectcare_persistentdocument_reportfolderbase 
 {
-	/**
-	 * @return string
-	 */
-	public function getTreeNodeLabel()
-	{
-		return LocaleService::getInstance()->transBO(parent::getTreeNodeLabel(), array('ucf'));
-	}
 }
