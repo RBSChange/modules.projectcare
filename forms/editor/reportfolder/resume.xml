@@ -1,9 +1,13 @@
 <?xml version="1.0"?>
 <panel>
-	<section name="properties" linkedtab="properties" labeli18n="m.uixul.bo.doceditor.section.properties" image="{IconsBase}/small/edit-properties.png">
+	<section name="properties" labeli18n="m.uixul.bo.doceditor.section.properties" image="{IconsBase}/small/edit-properties.png">
 		<property name="label" labeli18n="m.uixul.bo.doceditor.property.label" />
 		<property name="author" labeli18n="m.uixul.bo.doceditor.property.author" />
 		<property name="creationdate" labeli18n="m.uixul.bo.doceditor.property.creationdate" />
+	</section>
+	<section name="publication" linkedtab="publication" labeli18n="modules.uixul.bo.doceditor.section.Status" image="{IconsBase}/small/status.png">
+		<property name="status" labeli18n="modules.uixul.bo.doceditor.property.Status" />
+		<property name="workflow" labeli18n="modules.uixul.bo.doceditor.property.Workflow" />
 	</section>
 	<section name="history" linkedtab="history" actiontexti18n="m.uixul.bo.doceditor.section.action.view" labeli18n="m.uixul.bo.doceditor.section.history"
 		image="{IconsBase}/small/history.png">

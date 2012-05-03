@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <panels>
 	<panel name="resume" />
+	<panel name="publication"/>
 	<panel name="history" />
 </panels>
