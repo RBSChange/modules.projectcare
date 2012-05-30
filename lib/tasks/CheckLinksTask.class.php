@@ -17,7 +17,7 @@ class projectcare_CheckLinksTask extends task_SimpleSystemTask
 		while (!$end)
 		{
 			$this->plannedTask->ping();
-			$result = f_util_System::execHTTPScript($batchPath, array($offset, $chunkSize, $report->getId()));
+			$result = f_util_System::execScript($batchPath, array($offset, $chunkSize, $report->getId()));
 			if ($result === 'END')
 			{
 				$end = true;
@@ -45,7 +45,7 @@ class projectcare_CheckLinksTask extends task_SimpleSystemTask
 				while (!$end)
 				{
 					$this->plannedTask->ping();
-					$result = f_util_System::execHTTPScript($batchPath, array($modelName, $offset, $chunkSize, $report->getId()));
+					$result = f_util_System::execScript($batchPath, array($modelName, $offset, $chunkSize, $report->getId()));
 					if ($result === 'END')
 					{
 						$end = true;
@@ -75,7 +75,7 @@ class projectcare_CheckLinksTask extends task_SimpleSystemTask
 				while (!$end)
 				{
 					$this->plannedTask->ping();
-					$result = f_util_System::execHTTPScript($batchPath, array($modelName, $offset, $chunkSize, $report->getId()));
+					$result = f_util_System::execScript($batchPath, array($modelName, $offset, $chunkSize, $report->getId()));
 					if ($result === 'END')
 					{
 						$end = true;
@@ -105,7 +105,7 @@ class projectcare_CheckLinksTask extends task_SimpleSystemTask
 				while (!$end)
 				{
 					$this->plannedTask->ping();
-					$result = f_util_System::execHTTPScript($batchPath, array($modelName, $offset, $chunkSize, $report->getId()));
+					$result = f_util_System::execScript($batchPath, array($modelName, $offset, $chunkSize, $report->getId()));
 					if ($result === 'END')
 					{
 						$end = true;

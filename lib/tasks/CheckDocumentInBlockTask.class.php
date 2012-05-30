@@ -17,7 +17,7 @@ class projectcare_CheckDocumentInBlockTask extends task_SimpleSystemTask
 		while (!$end)
 		{
 			$this->plannedTask->ping();
-			$result = f_util_System::execHTTPScript($batchPath, array($offset, $chunkSize, $report->getId()));
+			$result = f_util_System::execScript($batchPath, array($offset, $chunkSize, $report->getId()));
 			if ($result === 'END')
 			{
 				$end = true;
@@ -41,7 +41,7 @@ class projectcare_CheckDocumentInBlockTask extends task_SimpleSystemTask
 		while (!$end)
 		{
 			$this->plannedTask->ping();
-			$result = f_util_System::execHTTPScript($batchPath, array($offset, $chunkSize, $report->getId()));
+			$result = f_util_System::execScript($batchPath, array($offset, $chunkSize, $report->getId()));
 			if ($result === 'END')
 			{
 				$end = true;
@@ -65,7 +65,7 @@ class projectcare_CheckDocumentInBlockTask extends task_SimpleSystemTask
 		while (!$end)
 		{
 			$this->plannedTask->ping();
-			$result = f_util_System::execHTTPScript($batchPath, array($offset, $chunkSize, $report->getId()));
+			$result = f_util_System::execScript($batchPath, array($offset, $chunkSize, $report->getId()));
 			if ($result === 'END')
 			{
 				$end = true;
@@ -89,7 +89,7 @@ class projectcare_CheckDocumentInBlockTask extends task_SimpleSystemTask
 		while (!$end)
 		{
 			$this->plannedTask->ping();
-			$result = f_util_System::execHTTPScript($batchPath, array($offset, $chunkSize, $report->getId()));
+			$result = f_util_System::execScript($batchPath, array($offset, $chunkSize, $report->getId()));
 			if ($result === 'END')
 			{
 				$end = true;
