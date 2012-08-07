@@ -9,4 +9,7 @@
 	<key id="check-document-in-blocks-report-folder">vérification des documents dans les blocks</key>
 	<key id="check-document-in-blocks-report-task">vérification des documents dans les blocks</key>
 	<key id="check-document-in-blocks-report">rapport de vérification des documents dans les blocks</key>
+	<key id="check-orphan-page-reference-report-folder">vérification des pages référence orphelines</key>
+	<key id="check-orphan-page-reference-report-task">vérification des pages référence orphelines</key>
+	<key id="check-orphan-page-reference-report">rapport de vérification des pages référence orphelines</key>
 </i18n>

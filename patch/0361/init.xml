@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+	<binding fileName="modules/task/persistentdocument/import/task_binding.xml" />
+	<binding fileName="modules/notification/persistentdocument/import/notification_binding.xml" />
+	<binding fileName="modules/projectcare/persistentdocument/import/projectcare_binding.xml" />
+
+	<rootfolder module="projectcare">
+		<reportfolder label="m.projectcare.bo.general.check-orphan-page-reference-report-folder" byCodeReference="orphan-page-reference" />
+	</rootfolder>
+
+	<systemfolder module="task" relatedmodule="projectcare">
+		<plannedtask label="m.projectcare.bo.general.check-orphan-page-reference-report-task" bySystemtaskclassname="projectcare_CheckOrphanPageReferenceTask" minute="-1" hour="-1" dayofmonth="-1" />
+	</systemfolder>
+	
+	<systemfolder module="notification" relatedmodule="projectcare">
+		<attribute name="body">
+			<![CDATA[Bonjour,<br /><br />Une vérification des pages référence orphelines vient de s'achever. Rendez-vous dans le module "Centre de qualité" pour consulter le rapport.]]>
+		</attribute>
+		<notification label="Vérification des pages référence orphelines" codename="modules_projectcare/checkorphanpagereference"
+			availableparameters="{receiverFirstName},{receiverLastName},{receiverFullName},{receiverTitle},{receiverEmail}"
+			subject="Vérification des pages référence orphelines" header="" body-attr="" footer="" />
+	</systemfolder>
+</script>

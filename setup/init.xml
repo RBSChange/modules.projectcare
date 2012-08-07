@@ -7,11 +7,13 @@
 	<rootfolder module="projectcare">
 		<reportfolder label="m.projectcare.bo.general.check-links-report-folder" byCodeReference="check-links" />
 		<reportfolder label="m.projectcare.bo.general.check-document-in-blocks-report-folder" byCodeReference="check-document-in-blocks" />
+		<reportfolder label="m.projectcare.bo.general.check-orphan-page-reference-report-folder" byCodeReference="orphan-page-reference" />
 	</rootfolder>
 
 	<systemfolder module="task" relatedmodule="projectcare">
 		<plannedtask label="m.projectcare.bo.general.check-links-report-task" bySystemtaskclassname="projectcare_CheckLinksTask" minute="-1" hour="-1" dayofmonth="-1" />
 		<plannedtask label="m.projectcare.bo.general.check-document-in-blocks-report-task" bySystemtaskclassname="projectcare_CheckDocumentInBlockTask" minute="-1" hour="-1" dayofmonth="-1" />
+		<plannedtask label="m.projectcare.bo.general.check-orphan-page-reference-report-task" bySystemtaskclassname="projectcare_CheckOrphanPageReferenceTask" minute="-1" hour="-1" dayofmonth="-1" />
 	</systemfolder>
 	
 	<systemfolder module="notification" relatedmodule="projectcare">
@@ -27,5 +29,11 @@
 		<notification label="Vérification des documents dans les blocks" codename="modules_projectcare/checkdocumentinblocksdone"
 			availableparameters="{receiverFirstName},{receiverLastName},{receiverFullName},{receiverTitle},{receiverEmail}"
 			subject="Vérification des documents dans les blocks" header="" body-attr="" footer="" />
+		<attribute name="body">
+			<![CDATA[Bonjour,<br /><br />Une vérification des pages référence orphelines vient de s'achever. Rendez-vous dans le module "Centre de qualité" pour consulter le rapport.]]>
+		</attribute>
+		<notification label="Vérification des pages référence orphelines" codename="modules_projectcare/checkorphanpagereference"
+			availableparameters="{receiverFirstName},{receiverLastName},{receiverFullName},{receiverTitle},{receiverEmail}"
+			subject="Vérification des pages référence orphelines" header="" body-attr="" footer="" />
 	</systemfolder>
 </script>

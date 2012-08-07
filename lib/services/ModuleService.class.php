@@ -589,5 +589,25 @@ class projectcare_ModuleService extends ModuleBaseService
 		
 		return null;
 	}
+	
+	public function checkOrphanPageReference($offset, $chunkSize, $report)
+	{
+		$prs = website_PagereferenceService::getInstance();
+		$pageReferences = $prs->createQuery()->setFirstResult($offset)->setMaxResults($chunkSize)->find();
+		$prg = projectcare_ReportGenerator::getInstance('projectcare_OrphanPageReferenceReportGenerator');
+		$rc = RequestContext::getInstance();
+		foreach ($pageReferences as $pageReference)
+		{
+			
+			/* @var $pageReference website_persistentdocument_pagereference */
+			if (!$prs->hasOriginPage($pageReference))
+			{
+				$row = array('id' => $pageReference->getId(), 'path' => $prs->getPathOf($pageReference));
+				$prg->appendRowsToCsv($report, array($row));
+			}
+		
+		}
+		return count($pageReferences) < $chunkSize;
+	}
 
 }
