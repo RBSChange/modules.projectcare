@@ -16,6 +16,7 @@ class projectcare_FileFilter extends RecursiveFilterIterator
 	public static $excludeDirs;
 	public static $recursive;
 	public static $extension;
+	
 	public static function setFilters($extension, $recursive = true, $exludeDirs = null)
 	{
 		self::$extension = $extension;
@@ -29,6 +30,7 @@ class projectcare_FileFilter extends RecursiveFilterIterator
 			self::$excludeDirs = array('.svn', '.git');
 		}
 	}
+	
 	public function accept()
 	{
 		$c = $this->current();

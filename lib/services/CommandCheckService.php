@@ -702,11 +702,13 @@ class projectcare_CommandCheckService extends ModuleBaseService
 			
 			$toolbarActionsNames = array();
 			$contextActionsNames = array();
+			$actionNames = array();
 			
 			$doc = f_util_DOMUtils::fromPath($path);
 			
 			$toolbarButtonNodeList = $doc->find('//toolbarbutton');
 			$contextActionNodeList = $doc->find('//contextaction');
+			$actionNodeList = $doc->find('//action');
 			
 			for ($i = 0; $i < $toolbarButtonNodeList->length; $i++)
 			{
@@ -722,13 +724,26 @@ class projectcare_CommandCheckService extends ModuleBaseService
 				$contextActionsNames[] = $attributes->item(0)->nodeValue;
 			}
 			
-			// Test toolbarbutton are in contextaction
+			for ($i = 0; $i < $actionNodeList->length; $i++)
+			{
+				$node = $actionNodeList->item($i);
+				$attributes = $node->attributes;
+				$actionNames[] = $attributes->item(0)->nodeValue;
+			}
+			
+			// Test toolbarbutton are in contextaction and actions
 			foreach ($toolbarActionsNames as $toolbarActionName)
 			{
 				if (!in_array($toolbarActionName, $contextActionsNames))
 				{
 					$errorFile = true;
-					$resultFile[] = '  -- ' . $toolbarActionName . ' not exists in contextAction';
+					$resultFile[] = '  -- ' . $toolbarActionName . ' in toolbar not exists in contextAction';
+				}
+				
+				if (!in_array($toolbarActionName, $actionNames))
+				{
+					$errorFile = true;
+					$resultFile[] = '  -- ' . $toolbarActionName . ' in toolbar not exists in actions';
 				}
 			}
 			
@@ -739,6 +754,27 @@ class projectcare_CommandCheckService extends ModuleBaseService
 				{
 					$errorFile = true;
 					$resultFile[] = '  -- ' . $action . ' must be in toolbarbutton';
+				}
+			}
+			
+			// Test if contexactions are in actions
+			foreach ($contextActionsNames as $contextActionsName)
+			{
+				if (!in_array($contextActionsName, $actionNames))
+				{
+					$errorFile = true;
+					$resultFile[] = '  -- ' . $contextActionsName . ' in contextaction not exists in actions';
+				}
+			}
+			
+			
+			// Test if all defined actions are used
+			foreach ($actionNames as $actionName)
+			{
+				if (!in_array($actionName, $contextActionsNames) && !in_array($actionName, $toolbarActionsNames) && !f_util_StringUtils::endsWith($actionName, '_'))
+				{
+// 					$errorFile = true;
+// 					$resultFile[] = '  -- ' . $actionName . ' is defined but not used in perspective';
 				}
 			}
 			
@@ -884,7 +920,7 @@ class projectcare_CommandCheckService extends ModuleBaseService
 			
 			$di = new RecursiveDirectoryIterator($path . DIRECTORY_SEPARATOR . $packagePath, RecursiveDirectoryIterator::KEY_AS_PATHNAME);
 			
-			projectcare_FileFilter::setFilters(true);
+			projectcare_FileFilter::setFilters('php', true);
 			
 			$fi = new projectcare_FileFilter($di);
 			$it = new RecursiveIteratorIterator($fi, RecursiveIteratorIterator::CHILD_FIRST);
