@@ -435,7 +435,13 @@ class projectcare_ModuleService extends ModuleBaseService
 		}
 		return count($templates) < $chunkSize;
 	}
-	
+
+	/**
+	 * @param integer $offset
+	 * @param integer $chunkSize
+	 * @param projectcare_persistentdocument_report $report
+	 * @return boolean true if all templates are checked, false if there are other templates to check.
+	 */
 	public function checkDocumentInBlockInPageTemplate($offset, $chunkSize, $report)
 	{
 		$templates = theme_PagetemplateService::getInstance()->createQuery()->add(Restrictions::ne('publicationstatus', 'DEPRECATED'))->setFirstResult($offset)->setMaxResults($chunkSize)->find();
@@ -450,7 +456,7 @@ class projectcare_ModuleService extends ModuleBaseService
 			{
 				foreach ($configuredBlocks as $configuredBlock)
 				{
-					$id = $configuredBlock['parameters']['cmpref'];
+					$id = isset($configuredBlock['parameters']['cmpref']) ? $configuredBlock['parameters']['cmpref'] : null;
 					
 					if ($id != null)
 					{
